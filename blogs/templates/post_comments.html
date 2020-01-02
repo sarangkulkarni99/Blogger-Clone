@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+
+
+<div class="col-md-8 card mb-4  mt-3 ">
+      <div class="card-body">
+        <!-- comments -->
+        {% with comments.count as total_comments %}
+            {% if total_comments == 1 %}
+                <h2>{{ total_comments }} comment</h2>
+            {% elif total_comments > 1 %}
+                <h2>{{ total_comments }} comments</h2>
+            {% endif %}
+          <p>
+          {% endwith %} {% for comment in comments %}
+        </p>
+
+        <div class="comments" style="padding: 10px;">
+          <p class="font-weight-bold">
+            {{ comment.name }}
+            <span class=" text-muted font-weight-normal">
+              {{ comment.date_added }}
+            </span>
+          </p>
+          {{ comment.text | linebreaks }}
+        </div>
+          <p>
+              <a class="edit" style="text-decoration: none; color: purple;
+                padding: 10px;"
+                  href="{% url 'blogs:edit_comment' comment.id %}">Edit Comment
+              </a>
+          </p>
+        {% empty %}
+        <h2>No comments</h2>
+        {% endfor %}
+      </div>
+    </div>
+{% endblock content %}

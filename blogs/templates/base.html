@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+      {% load bootstrap4 %}
+      {% bootstrap_css %}
+      {% bootstrap_javascript %}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+    <title>Blog</title>
+  </head>
+<body>
+
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="{% url 'blogs:index' %}">Blog</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarText">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="{% url 'blogs:home' %}">Posts</a>
+      </li>
+    </ul>
+      <ul class="nav navbar-nav navbar-right">
+          {% if user.is_authenticated %}
+            <li><a class="nav-link">Hello, {{ user.username }}</a></li>&nbsp;&nbsp;
+            <li><a class="nav-link" href="{% url 'users:logout' %}">log out</a></li>
+          {% else %}
+            <li><a class="nav-link" href="{% url 'users:register' %}">register</a></li>
+            <li><a class="nav-link" href="{% url 'users:login' %}">log in</a></li>
+          {% endif %}
+      </ul>
+  </div>
+</nav>
+
+
+<div class="container" style="padding: 20px;">
+    <div class="col-md-12 col-sm-12 page-header">
+        {% block header %} {% endblock header %}
+    </div>
+    <div class="col-md-12 col-sm-12">
+        {% block content %} {% endblock content %}
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+
+
+{% block content %}
+<div class="list" style="margin-top: 10px; padding-bottom: 10px;">
+    {% with post_list.count as total_post %}
+        {% if total_post == 0 %}
+            <h2>{{ total_post }} posts</h2>
+        {% elif total_post == 1 %}
+            <h2>{{ total_post }} post</h2>
+        {% elif total_post > 1 %}
+            <h2>{{ total_post }} posts</h2>
+        {% endif %}
+      {% endwith %}
+  </div>
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 card mb-4  mt-3 left  top">
+
+        {% for post in post_list %}
+      <div class="card-body">
+        <h1>{% block title %} {{ post.title }} {% endblock title %}</h1>
+        <p class=" text-muted">{{ post.author }} | {{ post.date_added }}</p>
+        <p class="card-text ">{{ post.text | safe }}</p>
+        <p><a class="text" href="{% url 'blogs:post_detail' post.id %}"
+        style="text-decoration: none; color:green;">Comments</a>&nbsp;&nbsp;
+        <a class="text" href="{% url 'blogs:new_comment' post.id %}"
+        style="text-decoration: none; color:green;">Add a comment</a>
+        </p>
+      </div>
+        {% endfor %}
+    </div>
+  </div>
+</div>
+      {% endblock content %}

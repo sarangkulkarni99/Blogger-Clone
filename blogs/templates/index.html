@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block header %}
+
+<div class="jumbotron">
+    <h1>Blog provides users to login/register and share their post and comments.</h1>
+</div>
+{% endblock header %}
+
+{% block content %}
+<h2 style="text-align: center;">
+    <a class="home-index" style="text-decoration: none; color: orange;"
+       href="{% url 'users:register' %}">Register an account</a> to add comments
+    to the post.
+</h2>
+{% endblock content %}
