@@ -2,22 +2,24 @@
 {% load bootstrap4 %}
 {% load crispy_forms_tags %}
 
-{% block content %}
+{% block header %}
 <div class="card-body">
         <form>
   <input type="button" value="&laquo;" onclick="history.go(-1)" class="btn" style="
-    position: relative; border: none; font-size: 40px; font-weight: bold; left: -50px;">
+    position: relative; border: none; font-size: 40px; font-weight: bold; left: -50px; left: -50px;">
 
 </form>
 </div>
+    <h2>Add a Reply</h2>
+{% endblock header %}
 
-    <h2>Add a comment</h2>
-   <form action="{% url 'blogs:new_comment' post.id %}" method="post"
+
+
+{% block content %}
+<form action="{% url 'blogs:reply' comment.id %}" method="post"
     style="margin-top: 1.3em;">
     {% csrf_token %}
     {{ form|crispy }}
     <button type="submit" class="btn btn-warning">Submit</button>
 </form>
-
-
 {% endblock content %}

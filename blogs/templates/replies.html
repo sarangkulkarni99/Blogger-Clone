@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+{% load crispy_forms_tags %}
+
+
+{% block header %}
+<div class="card-body">
+        <form>
+  <input type="button" value="&laquo;" onclick="history.go(-1)" class="btn" style="
+    position: relative; border: none; font-size: 40px; font-weight: bold; left: -50px;">
+
+</form>
+</div>
+
+{% endblock header %}
+
+{% block content %}
+
+<div class="col-md-8 card mb-4  mt-3 ">
+    <div class="card-body">
+        <!-- replies -->
+    {% with reply.count as total_replies %}
+            {% if total_replies == 0 %}
+                <h2>No replies</h2>
+            {% elif total_replies == 1 %}
+                <h2>{{ total_replies }} reply</h2>
+            {% elif total_replies > 1 %}
+                <h2>{{ total_replies }} replies</h2>
+            {% endif %}
+{% endwith %}
+        {% for replies in reply %}
+        <div class="comments" style="padding: 10px;">
+          <p class="font-weight-bold">
+            {{ replies.name }}
+            <span class=" text-muted font-weight-normal">
+              {{ replies.date_added }}
+            </span>
+          </p>
+          {{ replies.text | linebreaks }}
+        </div>
+        {% endfor %}
+</div>
+</div>
+
+
+{% endblock content %}

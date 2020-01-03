@@ -4,7 +4,13 @@
 {% block content %}
 
 
+<div class="card-body">
+        <form>
+  <input type="button" value="&laquo;" onclick="history.go(-1)" class="btn" style="
+    position: relative; border: none; font-size: 40px; font-weight: bold; left: -50px;">
 
+</form>
+</div>
 <div class="col-md-8 card mb-4  mt-3 ">
       <div class="card-body">
         <!-- comments -->
@@ -30,7 +36,11 @@
           <p>
               <a class="edit" style="text-decoration: none; color: purple;
                 padding: 10px;"
-                  href="{% url 'blogs:edit_comment' comment.id %}">Edit Comment
+                  href="{% url 'blogs:replies' comment.id %}">Show Replies
+              </a>
+              <a class="edit" style="text-decoration: none; color: purple;
+                padding: 10px;"
+                  href="{% url 'blogs:reply' comment.id %}">Reply
               </a>
           </p>
         {% empty %}
@@ -38,4 +48,8 @@
         {% endfor %}
       </div>
     </div>
+
+
+
+
 {% endblock content %}
