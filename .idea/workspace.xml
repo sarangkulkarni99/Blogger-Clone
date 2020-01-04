@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2a669f91-130a-4e8e-943d-84b64c166a1d" name="Default Changelist" comment="everything done" />
+    <list default="true" id="2a669f91-130a-4e8e-943d-84b64c166a1d" name="Default Changelist" comment="everything done">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -31,7 +33,7 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Downloads/Django_blog-1" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
   <component name="RecentsManager">
@@ -94,6 +96,10 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <ignored-roots>
+      <path value="$PROJECT_DIR$/post_comment" />
+      <path value="$PROJECT_DIR$/post_comments" />
+    </ignored-roots>
     <MESSAGE value="everything done" />
     <option name="LAST_COMMIT_MESSAGE" value="everything done" />
   </component>
@@ -142,10 +148,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1509" height="246" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1577972078835" />
-    <state x="161" y="0" key="SettingsEditor" timestamp="1578054813051">
+    <state x="161" y="0" key="SettingsEditor" timestamp="1578151600907">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="161" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1578054813051" />
+    <state x="161" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1578151600907" />
     <state x="495" y="158" key="git4idea.merge.GitMergeDialog" timestamp="1578063747786">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
