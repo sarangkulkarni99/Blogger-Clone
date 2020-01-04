@@ -26,7 +26,7 @@ class Comment(models.Model):
     text = models.TextField()
 
     class Meta:
-        ordering = ['date_added']
+        ordering = ['-date_added']
 
     def __str__(self):
         return 'Comment {} by {}'.format(self.text, self.name)
@@ -39,7 +39,7 @@ class Reply(models.Model):
     text = models.TextField()
 
     class Meta:
-        ordering = ['date_added']
+        ordering = ['-date_added']
         verbose_name_plural = 'replies'
 
     def __str__(self):
