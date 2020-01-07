@@ -18,7 +18,10 @@ urlpatterns = [
     #page for adding a new comment
     url(r'^new_comment/(?P<post_id>\d+)/$', views.new_comment, name='new_comment'),
 
-    #page for editing comment
-    url(r'^edit_comment/(?P<comment_id>\d+)/$', views.edit_comment, name='edit_comment'),
+    #page for all replies
+    url(r'^replies/(?P<comment_id>\d+)/$', views.replies, name='replies'),
+
+    #Page for adding reply
+    url(r'^reply/(?P<comment_id>\d+)/$', views.reply, name='reply'),
 
 ]

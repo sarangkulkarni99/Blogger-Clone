@@ -3,6 +3,13 @@
 
 
 {% block content %}
+<div class="card-body">
+        <form>
+  <input type="button" value="&laquo;" onclick="history.go(-1)" class="btn" style="
+    position: relative; border: none; font-size: 40px; font-weight: bold; left: -50px;">
+
+</form>
+</div>
 <div class="list" style="margin-top: 10px; padding-bottom: 10px;">
     {% with post_list.count as total_post %}
         {% if total_post == 0 %}

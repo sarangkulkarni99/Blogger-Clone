@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import Http404, HttpResponseRedirect
-from .forms import CommentForm
+from .forms import CommentForm, ReplyForm
 from .models import Post, Comment
 from django.views import generic
 from django.contrib.auth.decorators import login_required
@@ -47,21 +47,27 @@ def new_comment(request, post_id):
     context = {'post': post, 'form': form}
     return render(request, 'new_comment.html', context)
 
-@login_required
-def edit_comment(request, comment_id):
-    """Edit a comment"""
+def replies(request, comment_id):
     comment = get_object_or_404(Comment, id=comment_id)
-    post = comment.post
-    if post.author != request.user:
-        raise Http404
+    reply = comment.reply_set.all()
+    context = {'comment': comment, 'reply': reply}
+    return render(request, 'replies.html', context)
+
+@login_required
+def reply(request, comment_id):
+    """Add a reply to a comment"""
+    comment = get_object_or_404(Comment, id=comment_id)
 
     if request.method != 'POST':
-        form = CommentForm(instance=comment)
+        form = ReplyForm()
     else:
-        form = CommentForm(instance=comment, data=request.POST)
+        form = ReplyForm(data=request.POST)
         if form.is_valid():
-            form.save()
-            return HttpResponseRedirect(reverse('blogs:post_detail', args=[post.id]))
+            new_reply = form.save(commit=False)
+            new_reply.comment = comment
+            new_reply.save()
+            return HttpResponseRedirect(reverse('blogs:replies',
+                                                args=[comment_id]))
 
-    context = {'comment': comment, 'post': post, 'form': form}
-    return render(request, 'edit_comment.html', context)
+    context = {'comment': comment, 'form': form}
+    return render(request, 'reply.html', context)

@@ -26,7 +26,21 @@ class Comment(models.Model):
     text = models.TextField()
 
     class Meta:
-        ordering = ['date_added']
+        ordering = ['-date_added']
 
     def __str__(self):
         return 'Comment {} by {}'.format(self.text, self.name)
+
+class Reply(models.Model):
+    """Reply to a comment"""
+    comment = models.ForeignKey(Comment, on_delete=models.CASCADE)
+    name = models.CharField(max_length=80)
+    date_added = models.DateTimeField(auto_now_add=True)
+    text = models.TextField()
+
+    class Meta:
+        ordering = ['-date_added']
+        verbose_name_plural = 'replies'
+
+    def __str__(self):
+        return 'Reply {} by {}' .format(self.text, self.name)
