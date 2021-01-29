@@ -1,5 +1,5 @@
 # Blogger Clone
-post and comment webapp.
+Deployment link
 https://post-comments.herokuapp.com
 
 
